@@ -1,0 +1,346 @@
+@import 'mixins';
+:root {
+    --btn-color: #000000e8;
+    --btn-text: #ffff;
+}
+
+body {
+    font-family: SF Mono;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    @include respond(tab-port) {
+        font-size: 15px;
+    }
+    @include respond(phone) {
+        font-size: 12px;
+    }
+}
+
+.container {
+    max-width: 90vw;
+    margin: 20px auto;
+}
+
+.navbar {
+    display: flex;
+    background-color: rgba(240, 227, 225, 0.76);
+    @include respond(tab-port) {
+        justify-content: space-between;
+    }
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.nav-btn {
+    color: var(--btn-text);
+    font-size: 2rem;
+    padding: 15px 10px;
+    display: none;
+    cursor: pointer;
+    @include respond(tab-port) {
+        display: block;
+    }
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.25);
+    display: none;
+    animation: fadeIn linear .3s;
+}
+
+.nav_mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: var(--btn-text);
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: .35s ease;
+}
+
+.nav-mobile-list {
+    margin-top: 24px;
+}
+
+.nav-mobile-item {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    padding: 8px 20px;
+    font-size: 1.4rem;
+}
+
+.nav-mobile-item a {
+    text-decoration: none;
+}
+
+.close-btn-nav {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    color: #666666;
+    cursor: pointer;
+}
+
+#nav-mobile-input {
+    display: none;
+}
+
+#nav-mobile-input:checked~.nav_mobile {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+#nav-mobile-input:checked~.nav-overlay {
+    display: block;
+}
+
+.display-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-height: 60vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    @include respond(tab-port) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @include respond(phone) {
+        grid-template-columns: 1fr;
+    }
+    padding-bottom: 20px;
+}
+
+.display-product::-webkit-scrollbar {
+    display: none;
+}
+
+.product {
+    text-align: center;
+    &__image {
+        width: 80%;
+        height: 70%;
+        object-fit: cover;
+    }
+    &__name {
+        color: #584c4c;
+        font-weight: 600;
+        font-size: 20px;
+    }
+    &__price {
+        color: #df0b0b;
+        font-weight: 600;
+    }
+}
+
+.btn {
+    color: var(--btn-text);
+    background-color: var(--btn-color);
+    padding: 10px;
+    border-radius: 4px;
+    width: fit-content;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    & ion-icon {
+        font-size: 18px;
+    }
+}
+
+.btn:hover {
+    background-color: #584c4c;
+    transition: .65;
+}
+
+.category-title {
+    text-transform: uppercase;
+}
+
+.bag {
+    &__grid {
+        display: grid;
+        grid-template-columns: 60% 40%;
+    }
+    &-container {
+        max-width: 90vw;
+        margin: 0 auto;
+    }
+    &-list {
+        box-shadow: 0 -10px 20px rgb(13, 37, 89);
+        border-radius: 10px;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 85vh;
+        overflow-y: scroll;
+        padding: 10px;
+    }
+    &-list::-webkit-scrollbar {
+        display: none;
+    }
+    &-item {
+        border: 1px solid #0bdfa7;
+        width: 100%;
+        height: 300px;
+        margin: 10px 0;
+        background-color: #c0afafdb;
+        border-radius: 10px;
+        @include respond(tab-port) {
+            width: 40%;
+            height: 250px;
+        }
+    }
+    &-content {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    &__content--left {
+        margin: 10px 20px;
+    }
+    &__content-image {
+        width: 200px;
+        height: 270px;
+        object-fit: cover;
+        @include respond(tab-port) {
+            width: 150px;
+            height: 200px;
+        }
+        @include respond(phone) {
+            width: 100px;
+            height: 130px;
+        }
+    }
+    &__content-qty input {
+        background-color: transparent;
+        border: none;
+        font-size: 20px;
+        color: #df0b0b;
+        font-style: italic;
+        font-weight: 600;
+        border-radius: 4px;
+    }
+    &__delete {
+        margin: 10px;
+        font-size: 30px;
+        & a {
+            text-decoration: none;
+        }
+    }
+    &__btn--control {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 50px;
+    }
+    &__general-info {
+        border-top: 1px solid black;
+    }
+}
+
+.cart__icon {
+    font-size: 2.5rem;
+    position: relative;
+}
+
+.cart__icon::after {
+    content: attr(data-text);
+    position: absolute;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffff;
+    background-color: #df0b0bc7;
+    padding: 5px;
+    border-radius: 50%;
+    right: 0;
+    top: -25%;
+}
+
+.cart__from-navbar::after {
+    content: attr(data-text);
+    position: absolute;
+    font-weight: 600;
+    padding: 5px;
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@include respond(tab-port) {
+    .nav-res {
+        display: none;
+    }
+}
+
+// Login page
+.login {
+    &__form {
+        text-align: center;
+        width: 100%;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #000;
+    }
+    &__content {
+        display: grid;
+        text-align: left;
+        grid-template-columns: 50% 50%;
+    }
+    &__input {
+        width: 100%;
+        outline: none;
+        border: none;
+        padding: 10px 0;
+        // border-bottom: double #000;
+        box-shadow: 0 3px 5px #000;
+        margin: 5px 0;
+        font-size: 20px;
+        font-family: SF Mono;
+        border-radius: 6px;
+    }
+    &__input:focus {
+        background-color: #0bdfa7;
+    }
+    &__data {
+        margin: 10px 0;
+    }
+    &__data label {
+        border-bottom: 1px ridge #000;
+    }
+    &__image {
+        text-align: center;
+    }
+    &__btn {
+        text-align: center;
+    }
+    &__btn input {
+        text-align: center;
+        font-size: 20px;
+        font-family: SF Mono;
+    }
+}
