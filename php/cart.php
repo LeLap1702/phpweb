@@ -12,11 +12,9 @@ if (isset($_GET["id"])) {
     $_SESSION["cart"] = $array;
   }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,31 +22,25 @@ if (isset($_GET["id"])) {
   <link rel="stylesheet" href="../styles/style.css">
   <title>Your cart | MyLiShop</title>
 </head>
-
 <body>
-
   <div class="bag-container">
     <form method="post" action="">
       <input style="display: none;" type="submit" id="submitEdit" name="submitEdit"> <!-- The input submit :v -->
       <h1 style="text-align: center;">Giỏ hàng của bạn</h1>
       <div class="bag__grid">
-
         <div>
           <ul class="bag-list">
             <?php
             $totalPayment = 0;
             if (isset($_SESSION["cart"])) {
               $arrayCart = $_SESSION["cart"];
-
               if (empty($arrayCart["id"])) {
                 echo "Giỏ hàng của bạn rỗng!";
               }
-
               for ($i = count($arrayCart["id"]) - 1; $i >= 0; $i--) {
                 $product = FindProduct($arrayCart["id"][$i]);
                 $total = $arrayCart["quantity"][$i] * $product["price"];
                 $totalPayment += $total;
-                
                 echo '
                 <label class="bag-item" for="submitEdit" > <!-- label for the input submit :v -->
                   <div class="bag-content">
@@ -80,6 +72,7 @@ if (isset($_GET["id"])) {
                 edit.removeAttribute("disabled")
                 edit.style.border = "1px solid #000";
                 edit.style.backgroundColor = " #89fffd";
+                edit.style.width = "50%";
               </script>';
               if (isset($_POST["submitEdit"])) {
                 $quantity = $_POST["quantityEdit"];
@@ -103,13 +96,8 @@ if (isset($_GET["id"])) {
                 </script>';
               }
             }
-            
-
-
             ?>
-
           </ul>
-
         </div>
         <div class="bag__btn--control">
           <a class="btn" href="../index.php">Quay lại mua hàng</a> <br>
@@ -119,12 +107,8 @@ if (isset($_GET["id"])) {
               Tổng tiền thanh toán: <i class="product__price"><?php echo number_format($totalPayment); ?>vn&#8363;</i>
             </p>
           </div>
-
         </div>
     </form>
   </div>
-
-
 </body>
-
 </html>
