@@ -1,7 +1,4 @@
 # MyLiShop with database
-- Create the Database with the name ABC... -> import the MyLiShop_Database.sql file
-- Open the dbConnect.php file into php folder -> and rename the $database variable into ABC...
-- Run the index.php file.
 
 1. Homepage
 ![homepageMyLiShop](https://user-images.githubusercontent.com/89339440/160519203-a3700468-47b7-4bc6-948d-f9411ff62627.png)
@@ -21,4 +18,7 @@
 
 ![editcart](https://user-images.githubusercontent.com/89339440/160519457-23c7e47f-312f-4dc5-9fbb-01ac03aabffc.png)
 
+- Create the Database with the name ABC... -> import the MyLiShop_Database.sql file
+- Open the dbConnect.php file into php folder -> and rename the $database variable into ABC...
+- Run the index.php file.
 
