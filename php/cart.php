@@ -24,6 +24,7 @@ if (isset($_GET["id"])) {
 </head>
 <body>
   <div class="bag-container">
+    <label class="bag-item" for="submitEdit" > <!-- label for the input submit :v -->
     <form method="post" action="">
       <input style="display: none;" type="submit" id="submitEdit" name="submitEdit"> <!-- The input submit :v -->
       <h1 style="text-align: center;">Giỏ hàng của bạn</h1>
@@ -42,7 +43,7 @@ if (isset($_GET["id"])) {
                 $total = $arrayCart["quantity"][$i] * $product["price"];
                 $totalPayment += $total;
                 echo '
-                <label class="bag-item" for="submitEdit" > <!-- label for the input submit :v -->
+                <div class="bag-item"  >
                   <div class="bag-content">
                   <input type="number" value="'.$arrayCart["id"][$i].'" name="quantity' . $i . '" style="display: none;" > <!-- get name and id of the cart item :v -->
                     <div class="bag__content--left">
@@ -59,7 +60,7 @@ if (isset($_GET["id"])) {
                     <a href="cart.php?idEdit=quantity' . $i . '">&#9998;</a>
                     </div>
                   </div>
-                </label>';
+                </div>';
               }
             } else {
               echo "Giỏ hàng của bạn rỗng!";
@@ -109,6 +110,7 @@ if (isset($_GET["id"])) {
           </div>
         </div>
     </form>
+  </label>
   </div>
 </body>
 </html>
